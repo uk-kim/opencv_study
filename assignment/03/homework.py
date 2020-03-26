@@ -13,7 +13,10 @@ def onMouse(event, x, y, flags, param): # 아무스 콜백 함수 구현 ---①
         disp_img = param['template'].copy()
         rows = param['img'].shape[0]
         cols = param['img'].shape[1]
-        
+       
+	    if x < 0 or x >= cols or y < 0 or y >= rows:
+		    continue
+
         row = param['img'][y,:]
         col = param['img'][:,x]
         
@@ -21,17 +24,17 @@ def onMouse(event, x, y, flags, param): # 아무스 콜백 함수 구현 ---①
             _c1 = row[i]
             _c2 = row[i+1]
             
-            cv2.rectangle(disp_img, (i, rows+_c1[0]), (i+1, rows+_c2[0]), b)
-            cv2.rectangle(disp_img, (i, rows+_c1[1]), (i+1, rows+_c2[1]), g)
-            cv2.rectangle(disp_img, (i, rows+_c1[2]), (i+1, rows+_c2[2]), r)
+            cv2.line(disp_img, (i, rows+_c1[0]), (i+1, rows+_c2[0]), b)
+            cv2.line(disp_img, (i, rows+_c1[1]), (i+1, rows+_c2[1]), g)
+            cv2.line(disp_img, (i, rows+_c1[2]), (i+1, rows+_c2[2]), r)
 
         for i in range(len(col[:-1])):
             _c1 = col[i]
             _c2 = col[i+1]
 
-            cv2.rectangle(disp_img, (cols+_c1[0], i), (cols+_c2[0], i+1), b)
-            cv2.rectangle(disp_img, (cols+_c1[1], i), (cols+_c2[1], i+1), g)
-            cv2.rectangle(disp_img, (cols+_c1[2], i), (cols+_c2[2], i+1), r)
+            cv2.line(disp_img, (cols+_c1[0], i), (cols+_c2[0], i+1), b)
+            cv2.line(disp_img, (cols+_c1[1], i), (cols+_c2[1], i+1), g)
+            cv2.line(disp_img, (cols+_c1[2], i), (cols+_c2[2], i+1), r)
 
         cv2.imshow(param['title'], disp_img)
         cv2.waitKey(1)
