@@ -14,8 +14,8 @@ def onMouse(event, x, y, flags, param): # 아무스 콜백 함수 구현 ---①
         rows = param['img'].shape[0]
         cols = param['img'].shape[1]
        
-	    if x < 0 or x >= cols or y < 0 or y >= rows:
-		    continue
+        if x < 0 or x >= cols or y < 0 or y >= rows:
+            continue
 
         row = param['img'][y,:]
         col = param['img'][:,x]
@@ -57,6 +57,7 @@ if __name__ == "__main__":
             if ret:
                 img = frame.copy()
                 break
+            cnt += 1
         cap.release()
     else:
         cap.release()
