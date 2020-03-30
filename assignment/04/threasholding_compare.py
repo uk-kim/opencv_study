@@ -102,6 +102,14 @@ def main():
     th_img_5 = cv2.adaptiveThreshold(src_gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 9, 5)
     th_img_6 = cv2.adaptiveThreshold(src_gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 9, 5)
 
+    cv2.imwrite("./result/sudoku_gray.jpg", src_gray)
+    cv2.imwrite("./result/sudoku_th_1d_filter.jpg", th_img_1)
+    cv2.imwrite("./result/sudoku_th_2d_filter.jpg", th_img_2)
+    cv2.imwrite("./result/sudoku_th_mean.jpg", th_img_3)
+    cv2.imwrite("./result/sudoku_th_otsu.jpg", th_img_4)
+    cv2.imwrite("./result/sudoku_th_adaptive_mean.jpg", th_img_5)
+    cv2.imwrite("./result/sudoku_th_adaptive_gaussian.jpg", th_img_6)
+
     cv2.imshow("Source Image : Gray", src_gray)
     cv2.imshow("Thresholding : 1D Fitting", th_img_1)
     cv2.imshow("Thresholding : 2D Fitting", th_img_2)
