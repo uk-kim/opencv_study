@@ -13,9 +13,17 @@
 ![Source Image](./result/sudoku_gray.jpg)
 
 ### 1. 이미지에 대한 1차 평면 피팅을 통한 Thresholding
+* 1D Least Squares Surface
+![1D Least Squares Surface](./result/sudoku_1d_surface.jpg)
+
+* 1D Least Squares Surface Fitting
 ![1D Least Squares Surface Fitting](./result/sudoku_th_1d_filter.jpg)
 
 ### 2. 이미지에 대한 2차 곡면 피팅을 통한 Thresholding
+* 2D Least Squares Surface
+![2D Least Squares Surface](./result/sudoku_2d_surface.jpg)
+
+* 2D Least Squares Surface Fitting
 ![2D Least Squares Surface Fitting](./result/sudoku_th_2d_filter.jpg)
 
 ### 3. 이미지 전체 평균을 기준으로 Thresholding

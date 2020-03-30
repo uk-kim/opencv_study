@@ -102,8 +102,20 @@ def main():
     th_img_5 = cv2.adaptiveThreshold(src_gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 9, 5)
     th_img_6 = cv2.adaptiveThreshold(src_gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 9, 5)
 
+    surface_1d_int8 = surface_1d.copy()
+    surface_1d_int8[surface_1d < 0] = 0
+    surface_1d_int8[surface_1d > 255] = 255
+    surface_1d_int8 = surface_1d_int8.astype(np.uint8)
+
+    surface_2d_int8 = surface_2d.copy()
+    surface_2d_int8[surface_2d < 0] = 0
+    surface_2d_int8[surface_2d > 255] = 255
+    surface_2d_int8 = surface_2d_int8.astype(np.uint8)
+
     cv2.imwrite("./result/sudoku_gray.jpg", src_gray)
     cv2.imwrite("./result/sudoku_th_1d_filter.jpg", th_img_1)
+    cv2.imwrite("./result/sudoku_1d_surface.jpg", surface_1d_int8)
+    cv2.imwrite("./result/sudoku_2d_surface.jpg", surface_2d_int8)
     cv2.imwrite("./result/sudoku_th_2d_filter.jpg", th_img_2)
     cv2.imwrite("./result/sudoku_th_mean.jpg", th_img_3)
     cv2.imwrite("./result/sudoku_th_otsu.jpg", th_img_4)
