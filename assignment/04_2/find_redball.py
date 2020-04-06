@@ -53,6 +53,8 @@ def main():
     video_file = './tracking_2.mp4'
     cap = cv2.VideoCapture(video_file)
 
+    cnt = 0
+
     while True:
         if(cap.get(cv2.CAP_PROP_POS_FRAMES) == cap.get(cv2.CAP_PROP_FRAME_COUNT)):
             print(" The end of this video")
@@ -105,8 +107,13 @@ def main():
         frame = np.concatenate([frame, frame_fg, frame_bg], 1)
         cv2.imshow("video", frame)
         
+        if cnt % 50 == 0:
+            cv2.imwrite("./result/tracking_result_{0:03d}.jpg".format(cnt), frame)
+
         if cv2.waitKey(1) == ord('q'):
             break
+
+        cnt += 1
 
     cap.release()
     cv2.destroyAllWindows()
